@@ -14,6 +14,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^22.5.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
@@ -30,9 +31,20 @@
     "vite-plugin-solid": "^2.10.2"
   },
   "dependencies": {
+    "@corvu/drawer": "^0.2.2",
+    "@corvu/otp-field": "^0.1.2",
+    "@corvu/resizable": "^0.2.3",
+    "@kobalte/core": "^0.13.4",
+    "@solid-primitives/refs": "^1.0.8",
     "@solidjs/router": "^0.14.3",
+    "chart.js": "^4.4.4",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk-solid": "^1.1.0",
+    "embla-carousel-solid": "^8.2.0",
     "idb": "^8.0.0",
-    "solid-js": "^1.8.21"
+    "solid-js": "^1.8.21",
+    "solid-sonner": "^0.2.8",
+    "tailwind-merge": "^2.5.2"
   }
 }

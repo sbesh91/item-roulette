@@ -1,12 +1,18 @@
-import { openDB } from 'idb';
-import type { Component } from 'solid-js';
+import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
 
-function init() {
-  return openDB('item_roulette', 1, {});
-}
-
-const App: Component = () => {
-  return <div class="grid grid-flow-col bg-red-200 animate-in fade-in">hello world</div>;
+const App = () => {
+  return (
+    <div class="dark h-dvh bg-slate-700 p-2">
+      <TextField>
+        <TextFieldLabel>Hello World</TextFieldLabel>
+        <TextFieldInput
+          onChange={(e) => {
+            console.log(e);
+          }}
+        />
+      </TextField>
+    </div>
+  );
 };
 
 export default App;
