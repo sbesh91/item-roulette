@@ -21,3 +21,8 @@ export async function clear() {
 export async function keys() {
   return (await dbPromise).getAllKeys('keyval');
 }
+
+export type Item = {
+  id: string;
+  name: string;
+};

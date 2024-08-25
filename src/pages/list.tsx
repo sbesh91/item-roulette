@@ -3,12 +3,7 @@ import { IconInbox, IconPlus } from '~/components/icons';
 import { Button } from '~/components/ui/button';
 import { Link } from '~/components/ui/link';
 import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
-import { get, set } from '~/db';
-
-type Item = {
-  id: string;
-  name: string;
-};
+import { get, Item, set } from '~/db';
 
 export function List() {
   const [list, setList] = createSignal<Item[]>([]);
