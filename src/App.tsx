@@ -13,7 +13,9 @@ const App = () => {
       <ColorModeProvider storageManager={storageManager}>
         <div class="h-dvh overflow-auto dark:bg-zinc-950">
           <header class="border-muted-foreground sticky top-0 grid w-full grid-cols-[1fr_auto] items-center border-b-[1px] bg-zinc-400/40 p-2 backdrop-blur-sm dark:bg-zinc-700/40">
-            <span class="font-semibold">Roulette</span>
+            <a href="/" class="font-semibold">
+              Roulette
+            </a>
             <ModeToggle />
           </header>
           <main class="h-[1200px] p-2">
