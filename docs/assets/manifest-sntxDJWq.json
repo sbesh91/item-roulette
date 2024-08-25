@@ -1,0 +1,10 @@
+{
+  "name": "Item Roulette",
+  "short_name": "Roulette",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/item-roulette",
+  "start_url": "/item-roulette"
+}
