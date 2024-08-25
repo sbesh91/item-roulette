@@ -1,6 +1,7 @@
 import { createSignal, For, Setter } from 'solid-js';
-import { IconPlus } from '~/components/icons';
+import { IconInbox, IconPlus } from '~/components/icons';
 import { Button } from '~/components/ui/button';
+import { Link } from '~/components/ui/link';
 import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
 import { get, set } from '~/db';
 
@@ -15,11 +16,17 @@ export function List() {
   const [list, setList] = createSignal(defaultList);
 
   return (
-    <div>
-      <Add setList={setList} />
-      <ul>
-        <For each={list()}>{(item) => <ListItem item={item} />}</For>
-      </ul>
+    <div class="m-auto flex max-w-96 flex-col items-center duration-300 animate-in fade-in-0 zoom-in-105">
+      <Link href="/" class="flex gap-2" variant={{ variant: 'outline' }}>
+        <span>Home</span>
+        <IconInbox />
+      </Link>
+      <div>
+        <Add setList={setList} />
+        <ul>
+          <For each={list()}>{(item) => <ListItem item={item} />}</For>
+        </ul>
+      </div>
     </div>
   );
 }
