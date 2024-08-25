@@ -1,4 +1,4 @@
-import { createSignal, For, Setter } from 'solid-js';
+import { createRenderEffect, createSignal, For, Setter } from 'solid-js';
 import { IconInbox, IconPlus } from '~/components/icons';
 import { Button } from '~/components/ui/button';
 import { Link } from '~/components/ui/link';
@@ -10,10 +10,13 @@ type Item = {
   name: string;
 };
 
-const defaultList = (await get<Item[]>('list')) ?? [];
-
 export function List() {
-  const [list, setList] = createSignal(defaultList);
+  const [list, setList] = createSignal<Item[]>([]);
+
+  createRenderEffect(async () => {
+    const defaultList = (await get<Item[]>('list')) ?? [];
+    setList(defaultList);
+  });
 
   return (
     <div class="m-auto flex max-w-96 flex-col items-center duration-300 animate-in fade-in-0 zoom-in-105">
@@ -38,13 +41,17 @@ function ListItem({ item }: ListItemProps) {
   return <li>{item.name}</li>;
 }
 
-const defaultValue = (await get<string>('value')) ?? '';
-
 type AddItemProps = {
   setList: Setter<Item[]>;
 };
 function Add({ setList }: AddItemProps) {
-  const [value, setValue] = createSignal(defaultValue);
+  const [value, setValue] = createSignal('');
+
+  createRenderEffect(async () => {
+    const defaultValue = (await get<string>('value')) ?? '';
+    setValue(defaultValue);
+  });
+
   return (
     <form
       onSubmit={(e) => {
