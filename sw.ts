@@ -6,7 +6,15 @@ if (env === 'prod') {
   navigator.serviceWorker.register('sw.js').then((reg) => {
     console.log(reg);
     reg.addEventListener('updatefound', () => {
-      toast('Update Available');
+      setTimeout(() => {
+        toast('Update Available', {
+          description: 'An update has been downloaded and is ready to be used.',
+          action: {
+            label: 'Update',
+            onClick: () => (location.href = '/item-roulette'),
+          },
+        });
+      }, 2000);
     });
   });
 } else {

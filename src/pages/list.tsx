@@ -1,5 +1,5 @@
 import { createRenderEffect, createSignal, For, Setter } from 'solid-js';
-import { IconInbox, IconPlus } from '~/components/icons';
+import { IconInbox, IconPlus, IconX } from '~/components/icons';
 import { Button } from '~/components/ui/button';
 import { Link } from '~/components/ui/link';
 import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
@@ -21,8 +21,8 @@ export function List() {
       </Link>
       <div>
         <Add setList={setList} />
-        <ul>
-          <For each={list()}>{(item) => <ListItem item={item} />}</For>
+        <ul class="flex flex-col gap-2 pt-2">
+          <For each={list()}>{(item) => <ListItem item={item} setList={setList} />}</For>
         </ul>
       </div>
     </div>
@@ -31,9 +31,26 @@ export function List() {
 
 type ListItemProps = {
   item: Item;
+  setList: Setter<Item[]>;
 };
-function ListItem({ item }: ListItemProps) {
-  return <li>{item.name}</li>;
+function ListItem({ item, setList }: ListItemProps) {
+  return (
+    <li class="flex items-center justify-between gap-2 duration-200 animate-in fade-in">
+      <span>{item.name}</span>
+      <Button
+        variant="destructive"
+        onClick={() => {
+          setList((prev) => {
+            const next = prev.filter((i) => i.id !== item.id);
+            set('list', next);
+            return next;
+          });
+        }}
+      >
+        <IconX />
+      </Button>
+    </li>
+  );
 }
 
 type AddItemProps = {
@@ -57,6 +74,7 @@ function Add({ setList }: AddItemProps) {
           name: formData.get('value') as string,
         };
         setValue('');
+        set('value', '');
 
         setList((prev) => {
           const next = [...prev, newItem];

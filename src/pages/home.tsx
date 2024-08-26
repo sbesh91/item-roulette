@@ -12,6 +12,7 @@ import {
 } from '~/components/ui/sheet';
 import { Skeleton } from '~/components/ui/skeleton';
 import { get, Item } from '~/db';
+import randomItem from '~/random';
 
 export function Home() {
   const [list, setList] = createSignal<Item[]>([]);
@@ -37,10 +38,12 @@ export function Home() {
 
           if (isOpen) {
             setTimeout(() => {
-              setSelected(values[0]);
+              setSelected(randomItem(values));
             }, 2000);
           } else {
-            setSelected(undefined);
+            setTimeout(() => {
+              setSelected(undefined);
+            }, 500);
           }
         }}
       >
